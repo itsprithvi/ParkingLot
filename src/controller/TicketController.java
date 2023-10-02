@@ -19,5 +19,7 @@ public class TicketController {
                 generateTicketRequestDto.getGateId()
         );
 
+
+
     }
 }

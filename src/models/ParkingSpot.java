@@ -39,4 +39,7 @@ public class ParkingSpot extends BaseEntity {
     public void setNumber(int number) {
         this.number = number;
     }
+
+    public String getSupportedVehicleTypes() {
+    }
 }
