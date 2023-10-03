@@ -1,7 +1,6 @@
 package service;
 
 import models.Gate;
-import models.ParkingLot;
 import models.ParkingSpot;
 import models.Vehicle;
 import repository.ParkingLotRepository;
@@ -11,8 +10,12 @@ import java.util.List;
 
 public class ParkingLotService {
 
-    private SpotAssignmentStrategy spotAssignmentStrategy;
-    private ParkingLotRepository parkingLotRepository;
+    private final SpotAssignmentStrategy spotAssignmentStrategy;
+    private  ParkingLotRepository parkingLotRepository;
+    private ParkingLotService(ParkingLotRepository parkingLotRepository, SpotAssignmentStrategy spotAssignmentStrategy) {
+        this.parkingLotRepository = parkingLotRepository;
+        this.spotAssignmentStrategy = spotAssignmentStrategy;
+    }
 
     public ParkingLotService(SpotAssignmentStrategy spotAssignmentStrategy) {
         this.spotAssignmentStrategy = spotAssignmentStrategy;

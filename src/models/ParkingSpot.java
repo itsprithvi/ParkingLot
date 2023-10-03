@@ -5,7 +5,7 @@ import java.util.List;
 public class ParkingSpot extends BaseEntity {
     private ParkingSpotStatus parkingSpotStatus;
     private ParkingFloor parkingFloor;
-    private List<VehicleType> vehicleTypes;
+    private List<VehicleType> supportedVehicleTypes;
     private int number;
 
     public ParkingSpotStatus getParkingSpotStatus() {
@@ -24,13 +24,6 @@ public class ParkingSpot extends BaseEntity {
         this.parkingFloor = parkingFloor;
     }
 
-    public List<VehicleType> getVehicleTypes() {
-        return vehicleTypes;
-    }
-
-    public void setVehicleTypes(List<VehicleType> vehicleTypes) {
-        this.vehicleTypes = vehicleTypes;
-    }
 
     public int getNumber() {
         return number;
@@ -40,6 +33,11 @@ public class ParkingSpot extends BaseEntity {
         this.number = number;
     }
 
-    public String getSupportedVehicleTypes() {
+    public List<VehicleType> getSupportedVehicleTypes() {
+        return supportedVehicleTypes;
+    }
+
+    public void setSupportedVehicleTypes(List<VehicleType> supportedVehicleTypes) {
+        this.supportedVehicleTypes = supportedVehicleTypes;
     }
 }

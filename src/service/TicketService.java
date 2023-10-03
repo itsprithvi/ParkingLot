@@ -1,8 +1,8 @@
 package service;
 
+import exceptions.NoParkingSpotFoundException;
 import repository.TicketRepository;
 import models.*;
-import strategy.SpotAssignmentStrategy;
 
 import java.util.Date;
 
@@ -15,7 +15,7 @@ public class TicketService {
 
     private ParkingLotService parkingLotService;
 
-    public Ticket generateTicket(String vehicleNumber, VehicleType vehicleType, Long gateId) {
+    public Ticket generateTicket(String vehicleNumber, VehicleType vehicleType, Long gateId) throws NoParkingSpotFoundException {
         /*
         * 1. Get the Vehicle from DB using vehicleNumber
         * 2. If Vehicle is not found, register vehicle
@@ -32,6 +32,10 @@ public class TicketService {
         Gate gate = gateService.getGate(gateId);
 
         ParkingSpot parkingSpot = parkingLotService.getParkingLot(vehicle, gate);
+
+        if(parkingSpot == null) {
+            throw new NoParkingSpotFoundException("No parking spot found ");
+        }
 
         // Update the parking spot
         parkingSpot = parkingSpotService.assignParkingSpot(parkingSpot);
